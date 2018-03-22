@@ -20,7 +20,7 @@ RUN apt-get -y update && \
     apt-get install -q -y python-letsencrypt-apache && \
     apt-get install -q -y mc && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 # configure apache
 ADD config/mods-available/proxy_html.conf /etc/apache2/mods-available/
@@ -39,6 +39,14 @@ ADD config/scripts/run_letsencrypt.sh /run_letsencrypt.sh
 RUN chmod +x /*.sh && chmod +x /etc/my_init.d/*.sh && chmod +x /etc/service/apache/*
 
 ADD config/crontab /etc/crontab
+
+RUN ln -s /usr/config/proxy-server/certs/letsencrypt/live /etc/letsencrypt && \
+	ln -s /usr/config/proxy-server/apache-config/sites-available/cantabrana.no-ip.org-le-ssl.conf /etc/apache2/sites-available/cantabrana.no-ip.org-le-ssl.conf && \
+	ln -s /usr/config/proxy-server/apache-config/sites-available/cantabrana.no-ip.org.conf /etc/apache2/sites-available/cantabrana.no-ip.org.conf && \
+	ln -s /usr/config/proxy-server/apache-config/sites-enabled/cantabrana.no-ip.org-le-ssl.conf /etc/apache2/sites-available/cantabrana.no-ip.org-le-ssl.conf && \
+	ln -s /usr/config/proxy-server/apache-config/sites-enabled/cantabrana.no-ip.org.conf /etc/apache2/sites-available/cantabrana.no-ip.org.conf 
+	
+
 
 # Stuff
 EXPOSE 80
