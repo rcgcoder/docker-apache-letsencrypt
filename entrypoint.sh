@@ -1,11 +1,12 @@
 #!/bin/bash
 echo ">> copying files"
-#ln -s /usr/config/proxy-server/letsencrypt-live /etc/letsencrypt/live 2> /dev/null > /dev/null 
-#cp /usr/config/proxy-server/sites/links/* /etc/apache2/sites-available/ 2> /dev/null > /dev/null
-#cp /usr/config/proxy-server/sites/links/* /etc/apache2/sites-enabled/ 2> /dev/null > /dev/null 
-mount -o bind /usr/config/proxy-server/letsencrypt /etc/letsencrypt
-mount -o bind /usr/config/proxy-server/sites/links /etc/apache2/sites-available 
-mount -o bind /usr/config/proxy-server/sites/links /etc/apache2/sites-enabled  
+rmdir -r /etc/letsencrypt
+ln -s /usr/config/proxy-server/letsencrypt /etc/letsencrypt 2> /dev/null > /dev/null 
+rmdir -r /etc/apache2
+ln -s /usr/config/proxy-server/apache-config /etc/apache2 2> /dev/null > /dev/null 
+service apache2 stop
+service apache2 start
+
 exit 0
 # exec CMD
 #echo ">> exec docker CMD"
