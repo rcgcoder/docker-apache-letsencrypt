@@ -40,13 +40,12 @@ RUN chmod +x /*.sh && chmod +x /etc/my_init.d/*.sh && chmod +x /etc/service/apac
 
 ADD config/crontab /etc/crontab
 
-RUN ln -s /usr/config/proxy-server/certs/letsencrypt/live /etc/letsencrypt && \
-	ln -s /usr/config/proxy-server/apache-config/sites-available/cantabrana.no-ip.org-le-ssl.conf /etc/apache2/sites-available/cantabrana.no-ip.org-le-ssl.conf && \
-	ln -s /usr/config/proxy-server/apache-config/sites-available/cantabrana.no-ip.org.conf /etc/apache2/sites-available/cantabrana.no-ip.org.conf && \
-	ln -s /usr/config/proxy-server/apache-config/sites-enabled/cantabrana.no-ip.org-le-ssl.conf /etc/apache2/sites-available/cantabrana.no-ip.org-le-ssl.conf && \
-	ln -s /usr/config/proxy-server/apache-config/sites-enabled/cantabrana.no-ip.org.conf /etc/apache2/sites-available/cantabrana.no-ip.org.conf 
-	
 
+
+RUN mkdir -p /etc/letsencrypt/live && \
+	cp /usr/config/proxy-server/certs/letsencrypt/live/* /etc/letsencrypt/live/ 2> /dev/null > /dev/null && \
+    cp /usr/config/proxy-server/apache-config/sites-available/* /etc/apache2/sites-available/ 2> /dev/null > /dev/null && \
+    cp /usr/config/proxy-server/apache-config/sites-available/* /etc/apache2/sites-enabled/ 2> /dev/null > /dev/null 
 
 # Stuff
 EXPOSE 80
