@@ -40,14 +40,14 @@ RUN chmod +x /*.sh && chmod +x /etc/my_init.d/*.sh && chmod +x /etc/service/apac
 
 ADD config/crontab /etc/crontab
 
+ADD entrypoint.sh /opt/entrypoint.sh
+RUN chmod a+x /opt/entrypoint.sh
 
+CMD ["/opt/entrypoint.sh"]
 
 # Stuff
 EXPOSE 80
 EXPOSE 443
 VOLUME [ "$LETSENCRYPT_HOME", "/etc/apache2/sites-available", "/var/log/apache2" ]
-ADD entrypoint.sh /opt/entrypoint.sh
-RUN chmod a+x /opt/entrypoint.sh
 
-ENTRYPOINT ["/opt/entrypoint.sh"]
 
