@@ -14,6 +14,8 @@ ln -s /usr/config/dns-server/bind/etc /etc/bind 2> /dev/null > /dev/null
 /etc/init.d/bind9 start
 /etc/init.d/nscd start
 service apache2 start
+/etc/init.d/nscd restart
+/etc/init.d/bind9 restart
 
 exit 0
 # exec CMD

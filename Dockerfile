@@ -25,6 +25,7 @@ RUN apt-get -y update && \
 	apt-get install -q -y python-certbot-apache && \
 	apt-get install -q -y bind9 dnsutils bind9-doc && \
 	apt-get install -q -y nscd && \
+	apt-get install -q -y iputils-ping && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
