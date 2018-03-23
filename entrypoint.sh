@@ -17,6 +17,9 @@ service apache2 start
 /etc/init.d/nscd restart
 /etc/init.d/bind9 restart
 
+echo "now no-ip client installation"
+
+
 exit 0
 # exec CMD
 #echo ">> exec docker CMD"
