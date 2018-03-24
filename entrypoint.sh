@@ -17,8 +17,8 @@ service apache2 start
 /etc/init.d/nscd restart
 /etc/init.d/bind9 restart
 
-echo "now no-ip client installation"
-
+echo "now no-ip client run"
+/usr/config/dns-server/noip-client/config/noip2 -c /usr/config/dns-server/noip-client/config/no-ip2.conf
 
 exit 0
 # exec CMD

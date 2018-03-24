@@ -26,7 +26,7 @@ RUN apt-get -y update && \
 	apt-get install -q -y bind9 dnsutils bind9-doc && \
 	apt-get install -q -y nscd && \
 	apt-get install -q -y iputils-ping && \
-	apt-get install -q -y wget build-essential && \
+	apt-get install -q -y wget build-essential screen && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
