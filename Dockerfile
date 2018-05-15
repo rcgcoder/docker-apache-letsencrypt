@@ -51,7 +51,7 @@ ADD config/crontab /etc/crontab
 ADD entrypoint.sh /opt/entrypoint.sh
 RUN chmod a+x /opt/entrypoint.sh
 
-RUN /opt/entrypoint.sh
+//RUN /opt/entrypoint.sh
 
 # Stuff
 EXPOSE 80
